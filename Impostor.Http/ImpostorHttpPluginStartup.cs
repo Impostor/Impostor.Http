@@ -59,7 +59,7 @@ public class ImpostorHttpPluginStartup : IPluginStartup
 
         configurationBuilder.SetBasePath(Directory.GetCurrentDirectory());
         configurationBuilder.AddJsonFile("config_http.json", true);
-        configurationBuilder.AddEnvironmentVariables(prefix: "BOOT_HTTP_");
+        configurationBuilder.AddEnvironmentVariables(prefix: "IMPOSTOR_HTTP_");
 
         return configurationBuilder.Build();
     }

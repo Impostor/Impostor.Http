@@ -12,17 +12,11 @@ using Microsoft.Extensions.Hosting;
 public class ImpostorHttpPluginStartup : IPluginStartup
 {
     /// <summary>
-    /// Type for the OnWebHostConfigure event.
-    /// </summary>
-    /// <param name="app">The application builder for the web host.</param>
-    public delegate void WebHostConfigureHandler(IApplicationBuilder app);
-
-    /// <summary>
     /// Callback for the web host configuration.
     /// </summary>
     ///
     /// Register for this event if you want to insert middleware.
-    public static event WebHostConfigureHandler OnWebHostConfigure = (_) => { };
+    public static event Action<IApplicationBuilder>? OnWebHostConfigure;
 
     /// <inheritdoc/>
     public void ConfigureHost(IHostBuilder host)
@@ -39,7 +33,7 @@ public class ImpostorHttpPluginStartup : IPluginStartup
         {
             builder.Configure(app =>
             {
-                OnWebHostConfigure(app);
+                OnWebHostConfigure?.Invoke(app);
 
                 app.UseRouting();
 

@@ -18,7 +18,7 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="Impostor.Api" Version="1.6.0" />
+    <PackageReference Include="Impostor.Api" Version="1.7.2" />
     
     <!-- Code style libraries -->
     <PackageReference Include="SonarAnalyzer.CSharp" Version="8.43.0.51858" PrivateAssets="all" />

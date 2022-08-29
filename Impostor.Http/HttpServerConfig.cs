@@ -46,20 +46,4 @@ public class HttpServerConfig
      * This field is ignored if SSL is not used.
      */
     public string CertificatePath { get; set; } = string.Empty;
-
-    /**
-     * <summary>
-     * Gets or sets the IP address the HTTP Matchmaking server will listen on.
-     * </summary>
-     * This should be set to the same value as Impostor's PublicIp
-     */
-    public string PublicIp { get; set; } = "127.0.0.1";
-
-    /**
-     * <summary>
-     * Gets or sets the port the game server listens on.
-     * </summary>
-     * This should be set to the same value as Impostor's PublicPort
-     */
-    public ushort PublicPort { get; set; } = 22023;
 }

@@ -2,10 +2,12 @@ namespace Impostor.Http;
 
 using System.Net;
 using System.Text.Json.Serialization;
+using Impostor.Api.Config;
 using Impostor.Api.Games;
 using Impostor.Api.Games.Managers;
 using Impostor.Api.Innersloth;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 /**
  * <summary>
@@ -26,12 +28,13 @@ public class GamesController : ControllerBase
      * </summary>
      * <param name="gameManager">GameManager containing a list of games.</param>
      * <param name="listingManager">ListingManager responsible for filtering.</param>
-     * <param name="config">Prgram configuration containing the public ip address of this server.</param>
+     * <param name="serverConfig">Impostor configuration section containing the public ip address of this server.</param>
      */
-    public GamesController(IGameManager gameManager, ListingManager listingManager, HttpServerConfig config)
+    public GamesController(IGameManager gameManager, ListingManager listingManager, IOptions<ServerConfig> serverConfig)
     {
         this.gameManager = gameManager;
         this.listingManager = listingManager;
+        var config = serverConfig.Value;
         this.hostServer = new(new(IPAddress.Parse(config.PublicIp), config.PublicPort));
     }
 

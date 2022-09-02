@@ -70,7 +70,7 @@ public class TokenController : ControllerBase
         internal Token(string puid, int clientVersion)
         {
             this.Content = new TokenPayload(puid, clientVersion);
-            this.Hash = "boot_http_was_here";
+            this.Hash = "impostor_http_was_here";
         }
 
         /**

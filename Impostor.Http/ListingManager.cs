@@ -39,7 +39,7 @@ public class ListingManager
      * <param name="maxListings">Maximum amount of games to return.</param>
      * <returns>Listings that match the required criteria.</returns>
      */
-    public IEnumerable<IGame> FindListings(HttpContext ctx, MapFlags map, int impostorCount, GameKeywords language, int maxListings = 10)
+    public IEnumerable<IGame> FindListings(HttpContext ctx, int map, int impostorCount, GameKeywords language, int maxListings = 10)
     {
         int resultCount = 0;
 
@@ -52,7 +52,7 @@ public class ListingManager
             x.PlayerCount < x.Options.MaxPlayers))
         {
             // Check for options.
-            if (!map.HasFlag((MapFlags)(1 << (byte)game.Options.Map)))
+            if ((map & (1 << (int)game.Options.Map)) == 0)
             {
                 continue;
             }

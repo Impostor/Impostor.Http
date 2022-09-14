@@ -48,7 +48,7 @@ public class GamesController : ControllerBase
      * <returns>An array of game listings.</returns>
      */
     [HttpGet]
-    public IActionResult Index(MapFlags mapId, GameKeywords lang, int numImpostors)
+    public IActionResult Index(int mapId, GameKeywords lang, int numImpostors)
     {
         IEnumerable<IGame> listings = this.listingManager.FindListings(this.HttpContext, mapId, numImpostors, lang);
         return this.Ok(listings.Select(l => new GameListing(l)));

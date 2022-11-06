@@ -35,7 +35,7 @@ public class GamesController : ControllerBase
         this.gameManager = gameManager;
         this.listingManager = listingManager;
         var config = serverConfig.Value;
-        this.hostServer = new(new(IPAddress.Parse(config.PublicIp), config.PublicPort));
+        this.hostServer = new(new(IPAddress.Parse(config.ResolvePublicIp()), config.PublicPort));
     }
 
     /**

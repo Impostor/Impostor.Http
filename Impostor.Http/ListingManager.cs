@@ -45,28 +45,18 @@ public class ListingManager
 
         Func<IGame, bool>[] filters = this.serviceProvider.GetServices<IListingFilter>().Select(f => f.GetFilter(ctx)).ToArray();
 
-        // Find games that have not started yet.
+        List<IGame> compatibleGames = new List<IGame>();
+
+        // We want to add 2 types of games
+        // 1. Desireable games that the player wants to play (right language, right map, desired impostor amount)
+        // 2. Failing that, display compatible games the player could join (public games with spots available)
+
+        // .Where filters out games that can't be joined.
         foreach (var game in this.gameManager.Games.Where(x =>
             x.IsPublic &&
             x.GameState == GameStates.NotStarted &&
             x.PlayerCount < x.Options.MaxPlayers))
         {
-            // Check for options.
-            if ((map & (1 << (int)game.Options.Map)) == 0)
-            {
-                continue;
-            }
-
-            if (language != game.Options.Keywords)
-            {
-                continue;
-            }
-
-            if (impostorCount != 0 && game.Options.NumImpostors != impostorCount)
-            {
-                continue;
-            }
-
             bool addGame = true;
             foreach (var filter in filters)
             {
@@ -79,15 +69,56 @@ public class ListingManager
 
             if (addGame)
             {
-                // Add to result.
-                yield return game;
-
-                // Break out if we have enough.
-                if (++resultCount == maxListings)
+                if (IsGameDesired(game, map, impostorCount, language))
                 {
-                    yield break;
+                    // Add to result immediately.
+                    yield return game;
+
+                    // Break out if we have enough.
+                    if (++resultCount == maxListings)
+                    {
+                        yield break;
+                    }
+                }
+                else
+                {
+                    // Add to result to add afterwards. Adding is pointless if we already have enough compatible games to fill the list
+                    if (compatibleGames.Count < (maxListings - resultCount))
+                    {
+                        compatibleGames.Add(game);
+                    }
                 }
             }
         }
+
+        foreach (var game in compatibleGames)
+        {
+            yield return game;
+
+            if (++resultCount == maxListings)
+            {
+                yield break;
+            }
+        }
+    }
+
+    private bool IsGameDesired(IGame game, int map, int impostorCount, GameKeywords language)
+    {
+        if ((map & (1 << (int)game.Options.Map)) == 0)
+        {
+            return false;
+        }
+
+        if (language != game.Options.Keywords)
+        {
+            return false;
+        }
+
+        if (impostorCount != 0 && game.Options.NumImpostors != impostorCount)
+        {
+            return false;
+        }
+
+        return true;
     }
 }

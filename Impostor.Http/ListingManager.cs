@@ -49,20 +49,22 @@ public class ListingManager
         foreach (var game in this.gameManager.Games.Where(x =>
             x.IsPublic &&
             x.GameState == GameStates.NotStarted &&
-            x.PlayerCount < x.Options.MaxPlayers))
+            x.PlayerCount < x.Options.CurrentGameOptions.MaxPlayers))
         {
+            var options = game.Options.CurrentGameOptions;
+
             // Check for options.
-            if ((map & (1 << (int)game.Options.Map)) == 0)
+            if ((map & (1 << (int)options.Map)) == 0)
             {
                 continue;
             }
 
-            if (language != game.Options.Keywords)
+            if (language != options.Keywords)
             {
                 continue;
             }
 
-            if (impostorCount != 0 && game.Options.NumImpostors != impostorCount)
+            if (impostorCount != 0 && options.NumImpostors != impostorCount)
             {
                 continue;
             }

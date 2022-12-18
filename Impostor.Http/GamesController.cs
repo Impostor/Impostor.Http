@@ -142,10 +142,10 @@ public class GamesController : ControllerBase
             this.HostName = game.Host?.Client.Name ?? "Unknown host";
             this.HostPlatformName = "test";
             this.Platform = Platforms.StandaloneSteamPC;
-            this.MaxPlayers = game.Options.CurrentGameOptions.MaxPlayers;
-            this.NumImpostors = game.Options.CurrentGameOptions.NumImpostors;
-            this.MapId = game.Options.CurrentGameOptions.Map;
-            this.Language = game.Options.CurrentGameOptions.Keywords;
+            this.MaxPlayers = game.Options.MaxPlayers;
+            this.NumImpostors = game.Options.NumImpostors;
+            this.MapId = game.Options.Map;
+            this.Language = game.Options.Keywords;
         }
 
         [JsonPropertyName("IP")]

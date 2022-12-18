@@ -49,9 +49,9 @@ public class ListingManager
         foreach (var game in this.gameManager.Games.Where(x =>
             x.IsPublic &&
             x.GameState == GameStates.NotStarted &&
-            x.PlayerCount < x.Options.CurrentGameOptions.MaxPlayers))
+            x.PlayerCount < x.Options.MaxPlayers))
         {
-            var options = game.Options.CurrentGameOptions;
+            var options = game.Options;
 
             // Check for options.
             if ((map & (1 << (int)options.Map)) == 0)

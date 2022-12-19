@@ -44,13 +44,18 @@ public class GamesController : ControllerBase
      * </summary>
      * <param name="mapId">Maps that are requested.</param>
      * <param name="lang">Preferred chat language.</param>
+     * <param name="quickChat">FreeChatOrQuickChat.</param>
+     * <param name="platformFlags">Platforms.</param>
      * <param name="numImpostors">Amount of impostors. 0 is any.</param>
+     * <param name="gameMode">GameMode.</param>
+     * <param name="filterTags">Filter tags seperated by a comma.</param>
      * <returns>An array of game listings.</returns>
      */
     [HttpGet]
-    public IActionResult Index(int mapId, GameKeywords lang, int numImpostors)
+    public IActionResult Index(int mapId, GameKeywords lang, string quickChat, int platformFlags, int numImpostors, GameModes gameMode, string filterTags)
     {
-        IEnumerable<IGame> listings = this.listingManager.FindListings(this.HttpContext, mapId, numImpostors, lang);
+        HashSet<string> filterTagsSet = new HashSet<string>(filterTags.Split(','));
+        IEnumerable<IGame> listings = this.listingManager.FindListings(this.HttpContext, mapId, numImpostors, lang, filterTagsSet);
         return this.Ok(listings.Select(l => new GameListing(l)));
     }
 

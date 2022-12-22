@@ -2,8 +2,8 @@
   
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
-    <VersionPrefix>0.3.0</VersionPrefix>
+    <TargetFramework>net7.0</TargetFramework>
+    <VersionPrefix>0.3.1</VersionPrefix>
 
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>

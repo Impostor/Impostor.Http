@@ -4,20 +4,20 @@ Adds HTTP matchmaking to [Impostor](https://github.com/Impostor/Impostor)
 
 ## Installation
 
-1. [Install Impostor first](https://github.com/Impostor/Impostor/blob/master/docs/Running-the-server.md). You need version 1.7.2 or newer.
-2. Install [ASP.NET Core Runtime 6](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) as well
+1. [Install Impostor first](https://github.com/Impostor/Impostor/blob/master/docs/Running-the-server.md). You need version 1.8.0 or newer.
+2. Install [ASP.NET Core Runtime 7](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) as well
 3. Download [Impostor.Http.dll from the GitHub Releases](https://github.com/Impostor/Impostor.Http/releases) and put it in Impostor's `plugin` folder
 4. In the base Impostor configuration file, add a PluginLoader section to let Impostor find the AspNetCore files:
 
 ```json
 {
   "PluginLoader": {
-    "LibraryPaths": ["/usr/share/dotnet/shared/Microsoft.AspNetCore.App/6.0.x"]
+    "LibraryPaths": ["/usr/share/dotnet/shared/Microsoft.AspNetCore.App/7.0.x"]
   }
 }
 ```
 
-Where `x` refers to the minor version of ASP.NET Core 6 you have installed.
+Where `x` refers to the minor version of ASP.NET Core 7 you have installed.
 
 5. Finally, if you want to change the default configuration, you need to create a configuration file for this plugin. See the next section for this.
 

@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Server.Kestrel.Core;
+
 namespace Impostor.Http;
 
 using System.Net;
@@ -47,6 +49,8 @@ public class ImpostorHttpPluginStartup : IPluginStartup
             {
                 serverOptions.Listen(IPAddress.Parse(config.ListenIp), config.ListenPort, listenOptions =>
                 {
+                    listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
+
                     if (config.UseHttps)
                     {
                         listenOptions.UseHttps(config.CertificatePath);

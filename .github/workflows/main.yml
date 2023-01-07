@@ -17,7 +17,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 6.x
+          dotnet-version: 7.x
 
       - name: Install dependencies
         run: dotnet restore --locked-mode
@@ -28,7 +28,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: Impostor.Http.dll
-          path: Impostor.Http/bin/Release/net6.0/Impostor.Http.dll
+          path: Impostor.Http/bin/Release/net7.0/Impostor.Http.dll
 
       - uses: actions/upload-artifact@v2
         with:
@@ -39,4 +39,4 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           draft: true
-          files: Impostor.Http/bin/Release/net6.0/Impostor.Http.dll
+          files: Impostor.Http/bin/Release/net7.0/Impostor.Http.dll

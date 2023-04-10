@@ -21,7 +21,7 @@ public class HttpServerConfig
      * Use "127.0.0.1" if you are running behind a reverse proxy or just testing locally.
      * Use "0.0.0.0" if you are directly exposing this server to the internet (not recommended).
      */
-    public string ListenIp { get; set; } = "127.0.0.1";
+    public string ListenIp { get; set; } = "0.0.0.0";
 
     /**
      * <summary>
@@ -29,7 +29,7 @@ public class HttpServerConfig
      * </summary>
      * For port forwarding purposes, this is a TCP port.
      */
-    public ushort ListenPort { get; set; } = 22000;
+    public ushort ListenPort { get; set; } = 22023;
 
     /**
      * <summary>

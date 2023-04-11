@@ -69,7 +69,7 @@ server {
     ssl_stapling_verify on;
 
     location / {
-        proxy_pass http://localhost:22000;
+        proxy_pass http://localhost:22023;
         proxy_pass_header Server;
         proxy_buffering off;
         proxy_redirect off;

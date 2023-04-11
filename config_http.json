@@ -1,6 +1,6 @@
 {
   "HttpServer": {
-    "ListenIp": "0.0.0.0",
+    "ListenIp": "127.0.0.1",
     "ListenPort": 22023,
     "UseHttps": false,
     "CertificatePath": ""

@@ -13,12 +13,12 @@ Adds HTTP matchmaking to [Impostor](https://github.com/Impostor/Impostor)
 
 Configuration is read from the `config_http.json` file or from environment variables prefixed with `IMPOSTOR_HTTP_`. You can copy over [this file](https://github.com/Impostor/Impostor.Http/blob/main/config_http.json) for the default settings. These are the possible keys:
 
-| Key                 | Default   | Description                                                                                                                                     |
-| ------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| **ListenIp**        | `0.0.0.0` | IP address to listen on. Use 127.0.0.1 if using a reverse proxy like nginx (recommended), use 0.0.0.0 if exposed directly (not recommended)     |
-| **ListenPort**      | 22023     | Port the HTTP matchmaking server is running on.                                                                                                 |
-| **UseHttps**        | `false`   | Set to true if using encrypted communication to your reverse proxy or if you're exposing this server directly to the internet (not recommended) |
-| **CertificatePath** | _not set_ | If UseHttps is enable, set this property to the path of your SSL certificate in PFX format.                                                     |
+| Key                 | Default     | Description                                                                                                                                     |
+| ------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| **ListenIp**        | `127.0.0.1` | IP address to listen on. Use 127.0.0.1 if using a reverse proxy like nginx (recommended), use 0.0.0.0 if exposed directly (not recommended)     |
+| **ListenPort**      | 22023       | Port the HTTP matchmaking server is running on.                                                                                                 |
+| **UseHttps**        | `false`     | Set to true if using encrypted communication to your reverse proxy or if you're exposing this server directly to the internet (not recommended) |
+| **CertificatePath** | _not set_   | If UseHttps is enable, set this property to the path of your SSL certificate in PFX format.                                                     |
 
 ## HTTPS configuration
 

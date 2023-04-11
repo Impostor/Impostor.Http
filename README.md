@@ -34,8 +34,11 @@ The reverse proxy can terminate HTTPS for you. To configure this:
 4. Configure your reverse proxy. For nginx, we have a sample config available. For the other servers, please refer to your server's documentation.
 
 <details>
+
 <summary>Nginx server configuration</summary>
-Replace YOUR_SERVER_NAME_HERE with the hostname of your server
+
+Replace YOUR_SERVER_NAME_HERE with the hostname of your server:
+
 ```nginx
 server {
     listen 443 ssl http2;
@@ -78,8 +81,8 @@ server {
     }
 
 }
-
 ```
+
 </details>
 
 ### 2. Use the Https feature of Impostor.Http
@@ -91,5 +94,3 @@ We don't recommend using this option for a couple reasons: it is not very flexib
 3. Use Let's Encrypt or a similar service to get an SSL certificate. We recommend [Certbot](https://certbot.eff.org/). Self-signed certificates are not enough.
 4. Convert your certificate to PFX format, for example using OpenSSL: `openssl pkcs12 -export -out certificate_fullchain.pfx -inkey privkey.pem -in fullchain.pem`.
 5. Set CertificatePath to the path to this `certificate_fullchain.pfx` file.
-
-```

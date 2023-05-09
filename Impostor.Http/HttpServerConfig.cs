@@ -29,7 +29,7 @@ public class HttpServerConfig
      * </summary>
      * For port forwarding purposes, this is a TCP port.
      */
-    public ushort ListenPort { get; set; } = 22000;
+    public ushort ListenPort { get; set; } = 22023;
 
     /**
      * <summary>

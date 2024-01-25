@@ -1,3 +1,10 @@
+# This plugin is deprecated
+
+Impostor 1.9.0 includes this plugin, as tha base game of Among Us has required the use of HTTP matchmaking for a while. You should switch to the built in server, see the [migration guide](https://github.com/Impostor/Impostor/blob/master/docs/Upgrading.md)
+
+<details>
+<summary>If you are using 1.8.4 or lower, the original plugin readme is hidden here</summary>
+
 # Impostor.Http
 
 Adds HTTP matchmaking to [Impostor](https://github.com/Impostor/Impostor)
@@ -94,3 +101,4 @@ We don't recommend using this option for a couple reasons: it is not very flexib
 3. Use Let's Encrypt or a similar service to get an SSL certificate. We recommend [Certbot](https://certbot.eff.org/). Self-signed certificates are not enough.
 4. Convert your certificate to PFX format, for example using OpenSSL: `openssl pkcs12 -export -out certificate_fullchain.pfx -inkey privkey.pem -in fullchain.pem`.
 5. Set CertificatePath to the path to this `certificate_fullchain.pfx` file.
+</details>
